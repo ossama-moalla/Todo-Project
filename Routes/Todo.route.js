@@ -11,7 +11,14 @@ router.route('/getinfo/:id').get((req,res)=>{
         .catch(err=>res.status(400).json('Error:'+err));
 
     });
+router.route('/:id').get((req,res)=>{
 
+        Todo.find({UserID:req.params.id})
+        .then(todo=>{
+            res.json(todo)})
+        .catch(err=>res.status(400).json('Error:'+err));
+
+    });
 router.route('/add').post((req,res)=>{
     
     var todo = new Todo;
